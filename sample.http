@@ -1,0 +1,5 @@
+### Testar API
+GET http://localhost:8080/health
+
+### Listar receitas
+GET http://localhost:8080/recipe

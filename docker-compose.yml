@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "${DB_PASSWORD}"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "${DB_PORT}:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: myrecipebook
+    depends_on:
+      - sqlserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: "${ASPNETCORE_ENVIRONMENT}"
+      ConnectionStrings__ConnectionSQLServer: "Server=${DB_HOST},1433;Database=${DB_NAME};User ID=${DB_USER};Password=${DB_PASSWORD};Encrypt=False;TrustServerCertificate=True"
+      ConnectionStrings__DatabaseType: "SqlServer"
+    ports:
+      - "${API_PORT}:8080"
+
+volumes:
+  sql_data:
