@@ -1,20 +1,14 @@
-# MyRecipeBook — Docker distribution (Production-ready)
+# 📦 MyRecipeBook — Docker Package v1.0.5
 
-Pacote Docker pronto para distribuição da API **MyRecipeBook**.
-Inclui imagem runtime, compose para SQL Server e documentação.
+Este pacote contém tudo que você precisa para rodar o **MyRecipeBook API** em ambiente de produção utilizando Docker.
 
-## Conteúdo do pacote
-- `Dockerfile` (runtime-only)
-- `docker-compose.yml` (usa `.env`)
-- `publish/` (binários .NET já compilados)
-- `.env` (pronto para uso)
-- `wait-for-sql.sh`, `setup.sh`, `setup.ps1`
-- `init.sql`, `sample.http`, `Makefile`
-- `Documentacao.pdf` (guia profissional)
-- `myrecipebook-final-package.zip` (distribuição final)
+---
 
-## Quick start (usuário final)
-1. Extrair o ZIP.
-2. Navegar até a pasta do pacote:
-   ```bash
-   cd myrecipebook-full-package-docker
+## 🚀 Executando o ambiente de produção
+
+1. Descompacte o pacote.
+2. Certifique-se de que Docker e Docker Compose estão instalados.
+3. Execute:
+
+```bash
+scripts/run-prod.bat
