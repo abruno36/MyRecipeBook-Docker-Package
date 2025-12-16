@@ -1,0 +1,9 @@
+{
+  "CommonTestUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
+  "MyRecipeBook.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
+  "MyRecipeBook.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
+  "MyRecipeBook.Communication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
+  "MyRecipeBook.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
+  "MyRecipeBook.Exceptions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
+  "MyRecipeBook.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~"
+}

@@ -1,0 +1,806 @@
+{
+	"info": {
+		"_postman_id": "cf7b6546-2e44-4b48-bb1c-99d88bddf6b7",
+		"name": "MyRecipeBook DOCKER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6661254",
+		"_collection_link": "https://aspnetcorewebapi-bruno.postman.co/workspace/WebAPI~8e50955c-7322-45c5-a454-a1fe4619cf87/collection/6661254-cf7b6546-2e44-4b48-bb1c-99d88bddf6b7?action=share&source=collection_link&creator=6661254"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code >= 200 && pm.response.code <= 299) {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    pm.environment.set(\"accessToken\", jsonData.tokens.accessToken);\r",
+									"    pm.environment.set(\"refreshToken\", jsonData.tokens.refreshToken);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/login",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code >= 200 && pm.response.code <= 299) {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    pm.environment.set(\"accessToken\", jsonData.tokens.accessToken);\r",
+									"    pm.environment.set(\"refreshToken\", jsonData.tokens.refreshToken);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tatiana Barbosa\",\r\n  \"email\": \"tatiana@gmail.com\",\r\n  \"password\": \"Abt12345$$##\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/user",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlLocal}}/user",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Antonio Bruno\",\r\n  \"email\": \"abruno36@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/user",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Antonio Bruno Almeida\",\r\n  \"email\": \"abruno36@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/user",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"Abt038905@@\",\r\n  \"newPassword\": \"Abt038905@@##\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/user/change-password",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recipe",
+			"item": [
+				{
+					"name": "Analise",
+					"item": [
+						{
+							"name": "debug-hash/compare",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlLocal}}/debug-hash/compare",
+									"host": [
+										"{{baseUrlLocal}}"
+									],
+									"path": [
+										"debug-hash",
+										"compare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "generate-hash",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlLocal}}/debug-hash/generate-hash?password=Abt038905@@",
+									"host": [
+										"{{baseUrlLocal}}"
+									],
+									"path": [
+										"debug-hash",
+										"generate-hash"
+									],
+									"query": [
+										{
+											"key": "password",
+											"value": "Abt038905@@"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify_password",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlLocal}}/debug-hash/verify?password=Abt120556@@&hash=$2a$11$5uHawj6xs0FfHRd5jI7Ok.Qp5rcKcuSeI1UEA81APwYRXPkPWKQ04q",
+									"host": [
+										"{{baseUrlLocal}}"
+									],
+									"path": [
+										"debug-hash",
+										"verify"
+									],
+									"query": [
+										{
+											"key": "password",
+											"value": "Abt120556@@"
+										},
+										{
+											"key": "hash",
+											"value": "$2a$11$5uHawj6xs0FfHRd5jI7Ok.Qp5rcKcuSeI1UEA81APwYRXPkPWKQ04q"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "recipe filter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"recipeTitle_Ingredient\": \"Bolo\",\r\n  \"cookingTimes\": [],\r\n  \"difficulties\": [],\r\n  \"dishTypes\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/recipe/filter",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"recipe",
+								"filter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recipe generate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "pt-BR",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ingredients\": [\r\n    \"3 colheres farinha de trigo\",\r\n    \"3 ovos\",\r\n    \"2 xícaras de fubá\",\r\n    \"2 xícaras de açúcar\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/recipe/generate",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"recipe",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recipe ById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlLocal}}/recipe/Frw",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"recipe",
+								"Frw"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recipe delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlLocal}}/recipe/2S9",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"recipe",
+								"2S9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recipe register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Bolo de laranja 2",
+									"type": "text"
+								},
+								{
+									"key": "cookingTime",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "difficulty",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "ingredients[0]",
+									"value": "2 xícaras (chá) de farinha de trigo",
+									"type": "text"
+								},
+								{
+									"key": "ingredients[1]",
+									"value": "2 xícaras (chá) de açúcar",
+									"type": "text"
+								},
+								{
+									"key": "ingredients[2]",
+									"value": "casca de 1 laranja",
+									"type": "text"
+								},
+								{
+									"key": "ingredients[3]",
+									"value": "4 ovos",
+									"type": "text"
+								},
+								{
+									"key": "ingredients[4]",
+									"value": "1 xícara (chá) de óleo",
+									"type": "text"
+								},
+								{
+									"key": "ingredients[6]",
+									"value": "1 colher (sopa) de fermento em pó",
+									"type": "text"
+								},
+								{
+									"key": "ingredients[7]",
+									"value": "suco de 2 laranjas",
+									"type": "text"
+								},
+								{
+									"key": "ingredients[8]",
+									"value": "Sal",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ingredients[9]",
+									"value": "Essência de baunilha",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "instructions[0].step",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "instructions[0].text",
+									"value": "Bata no liquidificador os ovos, o açúcar, o óleo, o suco e a casca da laranja.",
+									"type": "text"
+								},
+								{
+									"key": "instructions[1].step",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "instructions[1].text",
+									"value": "Passe para uma tigela e acrescente a farinha de trigo e o fermento.\n3",
+									"type": "text"
+								},
+								{
+									"key": "instructions[2].step",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "instructions[2].text",
+									"value": "Leve para assar em uma forma com furo central, untada e enfarinhada, por mais ou menos 30 minutos.",
+									"type": "text"
+								},
+								{
+									"key": "instructions[3].step",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "instructions[3].text",
+									"value": "Desenforme o bolo e molhe com suco de laranja.\n",
+									"type": "text"
+								},
+								{
+									"key": "instructions[4].step",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "instructions[4].text",
+									"value": "Sirva com café ou chá",
+									"type": "text"
+								},
+								{
+									"key": "dishTypes[0]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "dishTypes[1]",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/bruno/Documents/!Udemy/MeuLivroDeReceitas/bolo_de_laranja.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/recipe",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"recipe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recipe update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Bolo de Laranja Molhadinho\",\r\n  \"cookingTime\": 2,\r\n  \"difficulty\": 2,\r\n  \"ingredients\": [\r\n        \"1 e 1/2 xícara (chá) de água normal\",\r\n        \"1 xícara (chá) de óleo granola\",\r\n        \"2 xícaras (chá) de açúcar refinado\",\r\n        \"3 ovos\",\r\n        \"3 xícaras (chá) de farinha de trigo\",\r\n        \"1 colher (sopa) de fermento em pó\",\r\n        \"Margarina e farinha de trigo para untar e enfarinhar\",\r\n        \"Chocolate granulado para polvilhar\"\r\n  ],\r\n  \"instructions\": [\r\n    { \"step\": 1, \"text\": \"No liquidificador, bata a água, o óleo, o chocolate, o açúcar e os ovos por 2\" },\r\n    { \"step\": 2, \"text\": \"minutos. Transfira para uma tigela e misture a farinha e o fermento com uma\" },\r\n    { \"step\": 3, \"text\": \"colher. Despeje em uma fôrma de 25cm x 35cm untada e enfarinhada, e leve\" },\r\n    { \"step\": 4, \"text\": \"Polvilhe com granulado e sirva em pedaços.\" }\r\n  ],\r\n  \"dishTypes\": [1, 3]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/recipe/4F3",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"recipe",
+								"4F3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recipe update img",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/bruno/Documents/!Udemy/MeuLivroDeReceitas/bolo_de_laranja.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/recipe/image/hYJ",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"recipe",
+								"image",
+								"hYJ"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlLocal}}/dashboard",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Token",
+			"item": [
+				{
+					"name": "Refresh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code >= 200 && pm.response.code <= 299) {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    pm.environment.set(\"accessToken\", jsonData.tokens.accessToken);\r",
+									"    pm.environment.set(\"refreshToken\", jsonData.tokens.refreshToken);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"refreshToken\": \"nw0u6rFbyE+sr0Wth3rUhA==\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlLocal}}/token/refresh-token",
+							"host": [
+								"{{baseUrlLocal}}"
+							],
+							"path": [
+								"token",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

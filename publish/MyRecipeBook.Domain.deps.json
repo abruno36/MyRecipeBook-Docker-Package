@@ -1,0 +1,34 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "MyRecipeBook.Domain/1.0.0": {
+        "runtime": {
+          "MyRecipeBook.Domain.dll": {}
+        },
+        "resources": {
+          "fr/MyRecipeBook.Domain.resources.dll": {
+            "locale": "fr"
+          },
+          "pt-BR/MyRecipeBook.Domain.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "pt-PT/MyRecipeBook.Domain.resources.dll": {
+            "locale": "pt-PT"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MyRecipeBook.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
